@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 성민네트웍스 업데이트 포럼개최</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .glossary-tooltip {
+            position: relative;
+            cursor: help;
+            border-bottom: 1px dotted #3b82f6;
+            color: #1e40af;
+            font-weight: 500;
+        }
+        .glossary-tooltip:hover::after {
+            content: attr(data-description);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 250px;
+            padding: 10px;
+            background-color: #1f2937;
+            color: white;
+            font-size: 0.85rem;
+            border-radius: 6px;
+            z-index: 10;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: left;
+            line-height: 1.4;
+            margin-bottom: 5px;
+        }
+        /* Chat Widget Animation */
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .chat-slide-in {
+            animation: slideIn 0.3s ease-out forwards;
+        }
+        /* Loading Dot Animation */
+        .dot-flashing {
+            position: relative;
+            width: 6px;
+            height: 6px;
+            border-radius: 5px;
+            background-color: #9880ff;
+            color: #9880ff;
+            animation: dot-flashing 1s infinite linear alternate;
+            animation-delay: 0.5s;
+        }
+        .dot-flashing::before, .dot-flashing::after {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            top: 0;
+        }
+        .dot-flashing::before {
+            left: -10px;
+            width: 6px;
+            height: 6px;
+            border-radius: 5px;
+            background-color: #9880ff;
+            color: #9880ff;
+            animation: dot-flashing 1s infinite alternate;
+            animation-delay: 0s;
+        }
+        .dot-flashing::after {
+            left: 10px;
+            width: 6px;
+            height: 6px;
+            border-radius: 5px;
+            background-color: #9880ff;
+            color: #9880ff;
+            animation: dot-flashing 1s infinite alternate;
+            animation-delay: 1s;
+        }
+        @keyframes dot-flashing {
+            0% { background-color: #9880ff; }
+            50%, 100% { background-color: #ebe6ff; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- 내비게이션 -->
+    <nav class="fixed w-full bg-white shadow-md z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold text-blue-900">Seongmin Networks</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-gray-600 hover:text-blue-900 transition font-medium">행사 개요</a>
+                    <a href="#topics" class="text-gray-600 hover:text-blue-900 transition font-medium">주요 주제</a>
+                    <a href="#agenda" class="text-gray-600 hover:text-blue-900 transition font-medium">프로그램</a>
+                    <a href="#register" class="bg-blue-900 text-white px-6 py-2 rounded-md hover:bg-blue-800 transition font-medium">사전 등록</a>
+                </div>
+                <!-- 모바일 메뉴 버튼 -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-gray-900 focus:outline-none">
+                        <i class="fas fa-bars fa-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- 모바일 메뉴 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <a href="#about" class="block px-4 py-3 text-gray-600 hover:bg-gray-100">행사 개요</a>
+            <a href="#topics" class="block px-4 py-3 text-gray-600 hover:bg-gray-100">주요 주제</a>
+            <a href="#agenda" class="block px-4 py-3 text-gray-600 hover:bg-gray-100">프로그램</a>
+            <a href="#register" class="block px-4 py-3 bg-blue-50 text-blue-900 font-bold">사전 등록</a>
+        </div>
+    </nav>
+
+    <!-- 히어로 섹션 -->
+    <header class="hero-bg h-screen flex items-center justify-center text-center px-4 relative">
+        <div class="max-w-4xl mx-auto text-white">
+            <p class="text-blue-400 font-bold tracking-widest mb-4 uppercase">Innovation & Connectivity</p>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">2026 성민네트웍스<br>업데이트 포럼개최</h1>
+            <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+                2026 차세대 네트워크 인프라의 미래를 조망하고, 기업의 디지털 전환을 가속화할 핵심 전략을 공유합니다.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#register" class="bg-blue-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-700 transition shadow-lg text-lg">
+                    참가 신청하기
+                </a>
+                <a href="#agenda" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-bold hover:bg-white hover:text-blue-900 transition text-lg">
+                    프로그램 보기
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 행사 개요 -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">행사 개요</h2>
+                <div class="w-20 h-1 bg-blue-900 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-8 rounded-xl border border-gray-100 text-center hover:shadow-md transition">
+                    <div class="w-16 h-16 bg-blue-100 text-blue-900 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="far fa-calendar-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">일시</h3>
+                    <p class="text-gray-600">2026년 2월 12일 (목)</p>
+                    <p class="text-gray-500 text-sm mt-1">13:30 - 17:30</p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-xl border border-gray-100 text-center hover:shadow-md transition">
+                    <div class="w-16 h-16 bg-blue-100 text-blue-900 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-map-marker-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">장소</h3>
+                    <p class="text-gray-600">그랜드 인터컨티넨탈 서울 파르나스</p>
+                    <p class="text-gray-500 text-sm mt-1">5층 그랜드 볼룸</p>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-xl border border-gray-100 text-center hover:shadow-md transition">
+                    <div class="w-16 h-16 bg-blue-100 text-blue-900 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-users text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">대상</h3>
+                    <p class="text-gray-600">IT 및 네트워크 담당자</p>
+                    <p class="text-gray-500 text-sm mt-1">인프라 관리자 및 C-Level 임원</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 주요 주제 (기술 용어 설명 포함) -->
+    <section id="topics" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">핵심 기술 및 주제</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto mb-4">
+                    이번 포럼에서는 최신 네트워크 트렌드를 심도 있게 다룹니다. <br>
+                    <span class="text-sm text-gray-500">*파란색 점선 밑줄이 있는 용어에 마우스를 올리면 상세 설명을 확인할 수 있습니다.</span>
+                </p>
+                <div class="inline-block bg-blue-50 rounded-full px-4 py-2 text-sm text-blue-800 border border-blue-100">
+                    <i class="fas fa-sparkles mr-2 text-yellow-500"></i>
+                    Gemini AI가 각 주제에 대한 최신 트렌드 인사이트를 제공합니다.
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 주제 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm border-l-4 border-blue-900 relative group">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">
+                        <span class="glossary-tooltip" data-description="Software-Defined Wide Area Network의 약자. 소프트웨어를 사용하여 광역 통신망을 관리하는 기술로, 트래픽을 효율적으로 제어하고 연결 비용을 절감합니다.">SD-WAN</span> 고도화 전략
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        기업의 다지점 환경에서 네트워크 복잡성을 줄이고, 애플리케이션 성능을 최적화하기 위한 차세대 SD-WAN 구축 사례를 공유합니다.
+                    </p>
+                    <button onclick="getAIInsight(this, 'SD-WAN 고도화 전략')" class="text-sm bg-blue-100 text-blue-700 px-3 py-1.5 rounded hover:bg-blue-200 transition flex items-center">
+                        <i class="fas fa-magic mr-2"></i>AI 인사이트 보기
+                    </button>
+                    <div class="ai-response hidden mt-4 bg-gray-50 p-4 rounded-md text-sm text-gray-700 border border-gray-200"></div>
+                </div>
+
+                <!-- 주제 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm border-l-4 border-blue-700 relative group">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">
+                        <span class="glossary-tooltip" data-description="Zero Trust Network Access의 약자. '아무도 신뢰하지 않는다'는 전제 하에, 접속하려는 모든 사용자/기기를 검증한 후 최소한의 권한만 부여하는 보안 모델입니다.">ZTNA</span> 기반 보안 강화
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        경계가 사라진 하이브리드 업무 환경에서 기존 VPN의 한계를 극복하고, 사용자 중심의 강력한 보안 체계를 수립하는 방안을 제시합니다.
+                    </p>
+                    <button onclick="getAIInsight(this, 'ZTNA 기반 보안 강화')" class="text-sm bg-blue-100 text-blue-700 px-3 py-1.5 rounded hover:bg-blue-200 transition flex items-center">
+                        <i class="fas fa-magic mr-2"></i>AI 인사이트 보기
+                    </button>
+                    <div class="ai-response hidden mt-4 bg-gray-50 p-4 rounded-md text-sm text-gray-700 border border-gray-200"></div>
+                </div>
+
+                <!-- 주제 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm border-l-4 border-blue-500 relative group">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">
+                        <span class="glossary-tooltip" data-description="클라우드 컴퓨팅 환경의 이점을 최대로 활용하여 애플리케이션을 구축하고 실행하는 방식입니다.">Cloud Native</span> 인프라 전환
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        온프레미스(사내 구축형) 환경에서 클라우드로의 안정적인 마이그레이션 전략과 이를 뒷받침하는 네트워크 아키텍처 설계를 다룹니다.
+                    </p>
+                    <button onclick="getAIInsight(this, 'Cloud Native 인프라 전환')" class="text-sm bg-blue-100 text-blue-700 px-3 py-1.5 rounded hover:bg-blue-200 transition flex items-center">
+                        <i class="fas fa-magic mr-2"></i>AI 인사이트 보기
+                    </button>
+                    <div class="ai-response hidden mt-4 bg-gray-50 p-4 rounded-md text-sm text-gray-700 border border-gray-200"></div>
+                </div>
+
+                <!-- 주제 4 -->
+                <div class="bg-white p-8 rounded-lg shadow-sm border-l-4 border-blue-300 relative group">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">
+                        <span class="glossary-tooltip" data-description="AI for IT Operations의 약자. 인공지능과 머신러닝을 활용하여 IT 운영 업무를 자동화하고 장애를 예측하는 기술입니다.">AIOps</span>를 통한 운영 자동화
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">
+                        네트워크 장애를 사전에 예측하고 자동으로 대응하여 운영 효율성을 극대화하는 인공지능 기반 운영 솔루션을 소개합니다.
+                    </p>
+                    <button onclick="getAIInsight(this, 'AIOps를 통한 운영 자동화')" class="text-sm bg-blue-100 text-blue-700 px-3 py-1.5 rounded hover:bg-blue-200 transition flex items-center">
+                        <i class="fas fa-magic mr-2"></i>AI 인사이트 보기
+                    </button>
+                    <div class="ai-response hidden mt-4 bg-gray-50 p-4 rounded-md text-sm text-gray-700 border border-gray-200"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 프로그램 일정 -->
+    <section id="agenda" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">프로그램 일정</h2>
+                <div class="w-20 h-1 bg-blue-900 mx-auto"></div>
+            </div>
+
+            <div class="space-y-6">
+                <!-- 세션 아이템 -->
+                <div class="flex flex-col md:flex-row border-b border-gray-100 pb-6">
+                    <div class="md:w-1/4 mb-2 md:mb-0">
+                        <span class="text-blue-900 font-bold text-lg">13:30 - 14:00</span>
+                    </div>
+                    <div class="md:w-3/4">
+                        <h4 class="font-bold text-lg text-gray-900">등록 확인 및 웰컴 리셉션</h4>
+                        <p class="text-gray-500">네트워킹 및 전시장 투어</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row border-b border-gray-100 pb-6">
+                    <div class="md:w-1/4 mb-2 md:mb-0">
+                        <span class="text-blue-900 font-bold text-lg">14:00 - 14:40</span>
+                    </div>
+                    <div class="md:w-3/4">
+                        <div class="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded mb-2">Keynote</div>
+                        <h4 class="font-bold text-lg text-gray-900">하이퍼 커넥티드 시대의 네트워크 전략</h4>
+                        <p class="text-gray-500">김성민 대표이사 / 성민네트웍스</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row border-b border-gray-100 pb-6">
+                    <div class="md:w-1/4 mb-2 md:mb-0">
+                        <span class="text-blue-900 font-bold text-lg">14:40 - 15:30</span>
+                    </div>
+                    <div class="md:w-3/4">
+                        <div class="inline-block bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded mb-2">Session 1</div>
+                        <h4 class="font-bold text-lg text-gray-900">성공적인 SD-WAN 도입을 위한 3가지 핵심 요소</h4>
+                        <p class="text-gray-500">기술솔루션본부 박수석 상무</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row border-b border-gray-100 pb-6">
+                    <div class="md:w-1/4 mb-2 md:mb-0">
+                        <span class="text-blue-900 font-bold text-lg">15:30 - 15:50</span>
+                    </div>
+                    <div class="md:w-3/4">
+                        <h4 class="font-bold text-lg text-gray-900">Coffee Break</h4>
+                        <p class="text-gray-500">휴식 및 부스 상담</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row border-b border-gray-100 pb-6">
+                    <div class="md:w-1/4 mb-2 md:mb-0">
+                        <span class="text-blue-900 font-bold text-lg">15:50 - 16:40</span>
+                    </div>
+                    <div class="md:w-3/4">
+                        <div class="inline-block bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded mb-2">Session 2</div>
+                        <h4 class="font-bold text-lg text-gray-900">제로 트러스트(Zero Trust) 아키텍처 실현 방안</h4>
+                        <p class="text-gray-500">보안컨설팅팀 이책임 팀장</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row pb-6">
+                    <div class="md:w-1/4 mb-2 md:mb-0">
+                        <span class="text-blue-900 font-bold text-lg">16:40 - 17:30</span>
+                    </div>
+                    <div class="md:w-3/4">
+                        <h4 class="font-bold text-lg text-gray-900">경품 추첨 및 폐회</h4>
+                        <p class="text-gray-500">참석자 대상 경품 추첨 이벤트</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 사전 등록 -->
+    <section id="register" class="py-20 bg-blue-900 text-white">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">사전 등록 신청</h2>
+                <p class="text-blue-200">좌석이 한정되어 있으니 빠른 등록 부탁드립니다. 등록비는 무료입니다.</p>
+            </div>
+
+            <form id="registrationForm" class="bg-white rounded-lg p-8 text-gray-800 shadow-2xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="block text-sm font-bold mb-2" for="name">성함</label>
+                        <input class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:border-blue-500" type="text" id="name" placeholder="홍길동" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold mb-2" for="company">회사명</label>
+                        <input class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:border-blue-500" type="text" id="company" placeholder="성민네트웍스" required>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label class="block text-sm font-bold mb-2" for="email">이메일</label>
+                        <input class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:border-blue-500" type="email" id="email" placeholder="example@company.com" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold mb-2" for="phone">연락처</label>
+                        <input class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:border-blue-500" type="tel" id="phone" placeholder="010-1234-5678" required>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <label class="block text-sm font-bold mb-2" for="position">직책</label>
+                    <select class="w-full px-4 py-3 rounded border border-gray-300 focus:outline-none focus:border-blue-500" id="position">
+                        <option value="">선택해주세요</option>
+                        <option value="executive">임원 (C-Level)</option>
+                        <option value="manager">팀장/관리자</option>
+                        <option value="staff">실무자</option>
+                        <option value="other">기타</option>
+                    </select>
+                </div>
+
+                <div class="mb-8">
+                    <label class="flex items-start">
+                        <input type="checkbox" class="mt-1 mr-3" required>
+                        <span class="text-sm text-gray-600">개인정보 수집 및 이용에 동의합니다.</span>
+                    </label>
+                </div>
+
+                <button type="submit" class="w-full bg-blue-900 text-white font-bold py-4 rounded hover:bg-blue-800 transition shadow-lg">
+                    등록하기
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0 text-center md:text-left">
+                <h3 class="text-white text-xl font-bold mb-2">Seongmin Networks</h3>
+                <p class="text-sm">서울시 강남구 테헤란로 123 성민빌딩 10층</p>
+                <p class="text-sm mt-1">문의: event@seongmin.net | 02-123-4567</p>
+            </div>
+            <div class="flex space-x-6">
+                <a href="#" class="hover:text-white transition"><i class="fab fa-facebook fa-lg"></i></a>
+                <a href="#" class="hover:text-white transition"><i class="fab fa-linkedin fa-lg"></i></a>
+                <a href="#" class="hover:text-white transition"><i class="fab fa-youtube fa-lg"></i></a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 text-center text-xs text-gray-600">
+            &copy; 2026 Seongmin Networks. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Gemini AI Chat Widget -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <!-- Chat Button -->
+        <button id="chat-btn" class="bg-blue-600 text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg hover:bg-blue-700 transition transform hover:scale-105">
+            <i class="fas fa-robot text-2xl"></i>
+        </button>
+
+        <!-- Chat Window -->
+        <div id="chat-window" class="hidden absolute bottom-16 right-0 w-80 md:w-96 bg-white rounded-lg shadow-2xl border border-gray-200 flex flex-col overflow-hidden chat-slide-in" style="height: 500px;">
+            <div class="bg-blue-900 text-white p-4 flex justify-between items-center">
+                <h3 class="font-bold flex items-center"><i class="fas fa-sparkles mr-2 text-yellow-300"></i>AI 행사 도우미</h3>
+                <button id="close-chat" class="text-white hover:text-gray-300"><i class="fas fa-times"></i></button>
+            </div>
+            <div id="chat-messages" class="flex-1 p-4 overflow-y-auto bg-gray-50 space-y-3">
+                <!-- Welcome Message -->
+                <div class="flex items-start">
+                    <div class="bg-blue-100 text-blue-900 p-3 rounded-lg rounded-tl-none text-sm max-w-[85%] shadow-sm">
+                        안녕하세요! 성민네트웍스 포럼 AI 도우미입니다. <br>
+                        행사 일정, 주차, 기술 주제(SD-WAN, ZTNA) 등 궁금한 점을 물어보세요!
+                    </div>
+                </div>
+            </div>
+            <div class="p-3 border-t bg-white">
+                <div class="flex space-x-2">
+                    <input type="text" id="chat-input" class="flex-1 border rounded-full px-4 py-2 text-sm focus:outline-none focus:border-blue-500" placeholder="질문을 입력하세요...">
+                    <button id="send-btn" class="bg-blue-600 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-blue-700 transition">
+                        <i class="fas fa-paper-plane text-sm"></i>
+                    </button>
+                </div>
